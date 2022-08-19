@@ -1,43 +1,43 @@
-<template> 
+<template>
   <div>
     <a href="/auth#">
-      <img src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="">
+      <img
+        src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg"
+        alt=""
+      />
     </a>
     <h2>Log In to TaskApp</h2>
     <h3>Start Organizing your tasks todays!</h3>
   </div>
 
   <div>
-    <form action="Submit">
+    <label for="email">Email: </label>
+    <input
+      type="email"
+      name="email"
+      v-model="email"
+      placeholder="Enter your email"
+    />
+    <br /><br />
 
-      <label for="email">Email: </label>
-      <input 
-      type="email" 
-      name="email" 
-      v-model="emailA"
-      placeholder="Enter your email">
-      <p>{{emailA}}</p>
-      <br><br>
-
-      <label for="password">Password: </label>
-      <input type="password" 
-      name="password" 
+    <label for="password">Password: </label>
+    <input
+      type="password"
+      name="password"
       v-model="password"
-      id="password" 
-      placeholder="Enter your password">
-      <p>{{password}}</p>
-      <br><br>
+      id="password"
+      placeholder="Enter your password"
+    />
+    <br /><br />
 
-      <button>Sign In</button> 
+    <button type="button" @click="signIn">Sign In</button>
 
-      <div>
-        <h4>Don't have an account yet?</h4>
-        <PersonalRouter :route="route" :buttonText="buttonText" />
-        <br><br>
-        <router-link to="sign-up">Sing Up (Madu)</router-link>
-      </div>
-    </form>  
-    
+    <div>
+      <h4>Don't have an account yet?</h4>
+      <PersonalRouter :route="route" :buttonText="buttonText" />
+      <br /><br />
+      <router-link to="sign-up">Sing Up (Madu)</router-link>
+    </div>
   </div>
 </template>
 
@@ -49,15 +49,14 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
 
-
-const { data, error } = await supabase.from('profiles').select('username') 
+// const { data, error } = await supabase.from('profiles').select('username')
 
 // Route Variables
 const route = "/auth/sign-up";
 const buttonText = "Sign Up (IronHack)";
 
 // Input Fields
-const emailA = ref("");
+const email = ref("");
 const password = ref("");
 
 // Error Message
@@ -74,9 +73,11 @@ const redirect = useRouter();
 
 // Arrow function to Signin user to supaBase
 const signIn = async () => {
+  console.log("chispas");
   try {
     // calls the user store and send the users info to backend to logIn
-    await useUserStore().signIn(emailA.value, password.value);
+    await useUserStore().signIn(email.value, password.value);
+    console.log(useUserStore().user);
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {
@@ -88,8 +89,6 @@ const signIn = async () => {
     }, 5000);
   }
 };
-
-
 </script>
 
 <style>

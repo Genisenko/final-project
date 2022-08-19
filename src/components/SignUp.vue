@@ -28,15 +28,16 @@
 
       <br><br>
 
-      <label for="password">Confirm Your Password: </label>
-      <input type="password" 
-      name="password2" 
-      id="password2" 
+      <label for="confirmPassword">Confirm Your Password: </label>
+      <input type="confirmPassword" 
+      name="confirmPassword" 
+      v-model="confirmPassword"
+      id="confirmPassword" 
       placeholder="Enter your password">
 
       <br><br>
 
-      <button>Sign In</button> 
+      <button type="button" @click="signUp">Sign In</button> 
 
   <div>
     <h4>Already have an account?</h4>
@@ -53,14 +54,18 @@
 
 <script setup>
 import PersonalRouter from "./PersonalRouter.vue";
-
+import {ref, computed} from "vue";
 // Route Variables
 const route = "/auth/login";
 const buttonText = "Sign In (IronHack)";
 
-// Input Fields
+// // Input Fields
+const email = ref("");
+const password = ref("");
+const confirmPassword = ref("");
 
-// Error Message
+// // Error Message
+const messageError = ref("");
 
 // Show hide password variable
 
@@ -69,6 +74,32 @@ const buttonText = "Sign In (IronHack)";
 // Router to push user once SignedUp to Log In
                                                                                                                                                                                                     
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
+// const signUp = async () => {
+//   if(password.value === confirmPassword.value){
+//     try {
+//       const {error} = await supabase.auth.signUp({
+//         email: email.value,
+//         password: password.value
+//       })
+//       if (error) throw error;
+//       redirect
+//     }
+
+//     catch(error){
+//       messageError.value = error.message
+//       setTimeout(() => {
+//         messageError.value = null
+//       }, 2000)
+//     }
+//     return
+//   }
+//   messageError.value = "Passwords doesn't match" ;
+
+//   setTimeout(() => {
+//     errorMsg.value = null
+//   }, 2500)
+// };
+
 </script>
 
 <style></style>

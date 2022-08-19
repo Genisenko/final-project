@@ -13,7 +13,12 @@ of the JavaScript.
 ### 2nd Commit
 Today I finished the skeletons of Sign In and Sing Up pages & now I'm trying to implement the logic of Sign In.
 
+### 3rd Commit
+I started with the logic of Sign In, I'm having troubles & feeling very lost. This weekend I will try to
+watch classes, videos or read some content to try to make my mind more clear.
 
+## Day 2 | 
+### 1st Commit
 
 
 
