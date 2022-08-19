@@ -13,7 +13,8 @@ const routes = [
       { path: "sign-up", component: SignUp },
     ],
   },
-  { path: "/", component: Home },
+  { path: "/", 
+    component: Home },
 ];
 const router = createRouter({
   history: createWebHistory(),

@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div>
     <a href="/auth#">
       <img src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="">
@@ -11,33 +11,34 @@
     <form action="Submit">
 
       <label for="email">Email: </label>
-      <input type="email" 
+      <input 
+      type="email" 
       name="email" 
-      id="email" 
+      v-model="emailA"
       placeholder="Enter your email">
-
+      <p>{{emailA}}</p>
       <br><br>
 
       <label for="password">Password: </label>
       <input type="password" 
       name="password" 
+      v-model="password"
       id="password" 
       placeholder="Enter your password">
-
+      <p>{{password}}</p>
       <br><br>
 
       <button>Sign In</button> 
 
-  <div>
-    <h4>Don't have an account yet?</h4>
-    <a href="/singup#">Sing Up</a>
-  </div>
-    </form>
+      <div>
+        <h4>Don't have an account yet?</h4>
+        <PersonalRouter :route="route" :buttonText="buttonText" />
+        <br><br>
+        <router-link to="sign-up">Sing Up (Madu)</router-link>
+      </div>
+    </form>  
     
   </div>
-  <PersonalRouter :route="route" :buttonText="buttonText" />
-  <p>Time to build up the Final Project!</p>
-  <p class="wu-text">Wu Tang Forever</p>
 </template>
 
 <script setup>
@@ -48,12 +49,15 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
 
+
+const { data, error } = await supabase.from('profiles').select('username') 
+
 // Route Variables
 const route = "/auth/sign-up";
-const buttonText = "Test the Sign Up Route";
+const buttonText = "Sign Up (IronHack)";
 
 // Input Fields
-const email = ref("");
+const emailA = ref("");
 const password = ref("");
 
 // Error Message
@@ -72,7 +76,7 @@ const redirect = useRouter();
 const signIn = async () => {
   try {
     // calls the user store and send the users info to backend to logIn
-    await useUserStore().signIn(email.value, password.value);
+    await useUserStore().signIn(emailA.value, password.value);
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {

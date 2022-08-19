@@ -1,3 +1,5 @@
+<!-- Component used in link (Ironhack) metodth -->
+
 <template>
   <router-link :to="route">{{ buttonText }}</router-link>
 </template>
