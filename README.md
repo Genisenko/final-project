@@ -5,9 +5,13 @@ The first day, on the approach day of the project I made a trello and read the f
 to organize myself along all the project.
 
 ## Day 1 | 19/08/2022
+
+### 1st Commit
 The morning of the first day I focus on the skeleton of the Sign In page and started to look the logics
 of the JavaScript.
 
+### 2nd Commit
+Today I finished the skeletons of Sign In and Sing Up pages & now I'm trying to implement the logic of Sign In.
 
 
 
