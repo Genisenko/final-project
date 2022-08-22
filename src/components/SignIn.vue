@@ -54,6 +54,7 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
 
+
 // Route Variables
 const route = "/auth/sign-up";
 const buttonText = "Sign Up (IronHack)";

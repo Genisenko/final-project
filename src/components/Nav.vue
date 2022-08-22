@@ -1,13 +1,12 @@
 
 <template>
-  <header>
-    <nav class="nav">
-      <div class="div1">
-        <img src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648481844/taskApp/imgs/logo-small_bh8xj2.svg" 
+  <header class="flex flex-row mb-8 items-center gap-x-3">
+    <nav class="flex flex-row">
+      <div class="">
+        <img class="" src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648481844/taskApp/imgs/logo-small_bh8xj2.svg" 
         alt="logo">
-        <h1>TaskApp</h1>
       </div>
-      <div class="div2">
+      <div class="flex flex-row">
         <p>Welcome Back USER</p>
         <button>Log Out</button>
       </div>
@@ -30,22 +29,6 @@
 </script>
                                                                                                                                                                                                                           
 <style>
-.div1{
-  display: flex;
-  flex-direction: row;
-}
-
-.div2{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.nav {
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-}
 </style>
 
 

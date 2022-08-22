@@ -2,11 +2,12 @@
 <div>
   <Nav />
 </div>
-  <div>hello</div>
+  <div>hello from Home.vue</div>
 </template>
 
 <script setup>
-import Nav from '../components/Nav.vue';</script>
+import Nav from '../components/Nav.vue';
+</script>
 
 <style></style>
 

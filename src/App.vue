@@ -12,13 +12,25 @@ import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
 import { ref } from "vue";
+import {supabase} from "./supabase"
 
 
 const router = useRouter();
 const userStore = useUserStore();
 const { user } = storeToRefs(userStore);
 
-onMounted(async () => {
+//Create data
+// const appReady = ref(null);
+
+// //Check to see if user is already logged in
+// const users = supabase.auth.user();
+
+// // If user does not exist, need to make app ready
+// if (!users) {
+//   appReady.value = true;
+// }
+
+onMounted(async () => { //Pedir ayuda con esta función (58:22)
   const appReady = ref(null);
   try {
     await userStore.fetchUser(); // here we call fetch user

@@ -25,6 +25,7 @@ Working in SignUp function, having troubles to redirect to SignIn after click th
 SignIn & SignUp finished
 
 ### 3rd Commit
+Tailwind Installed
 
 
 # final-boiler-plate
