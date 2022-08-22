@@ -21,6 +21,11 @@ watch classes, videos or read some content to try to make my mind more clear.
 ### 1st Commit
 Working in SignUp function, having troubles to redirect to SignIn after click the button, in process to solve it
 
+### 2nd Commit
+SignIn & SignUp finished
+
+### 3rd Commit
+
 
 # final-boiler-plate
 

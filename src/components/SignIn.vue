@@ -9,8 +9,12 @@
     <h2>Log In to TaskApp</h2>
     <h3>Start Organizing your tasks todays!</h3>
   </div>
+    <div v-if="errorMsg"> <!--Priorizar error formato email-->
+    <p>{{errorMsg}}</p>
+  </div>
 
   <div>
+    <form @submit.prevent="singIn" action="Submit">
     <label for="email">Email: </label>
     <input
       type="email"
@@ -38,6 +42,7 @@
       <br /><br />
       <router-link to="sign-up">Sing Up (Madu)</router-link>
     </div>
+  </form>
   </div>
 </template>
 
@@ -48,8 +53,6 @@ import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
-
-// const { data, error } = await supabase.from('profiles').select('username')
 
 // Route Variables
 const route = "/auth/sign-up";
@@ -73,11 +76,13 @@ const redirect = useRouter();
 
 // Arrow function to Signin user to supaBase
 const signIn = async () => {
-  console.log("chispas");
   try {
-    // calls the user store and send the users info to backend to logIn
-    await useUserStore().signIn(email.value, password.value);
-    console.log(useUserStore().user);
+// calls the user store and send the users info to backend to logIn
+    const {error} = await supabase.auth.signIn({
+      email: email.value, 
+      password: password.value,
+    });
+    if (error) throw error;
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {

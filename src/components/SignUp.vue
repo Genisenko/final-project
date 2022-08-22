@@ -73,15 +73,12 @@ const confirmPassword = ref("");
 // // Error Message
 const messageError = ref("");
 
-// Login reference
-const router = useRouter();
-
 // Show hide password variable
 
 // Show hide confrimPassword variable
 
 // Router to push user once SignedUp to Log In
-                                                                                                                                                                                                     
+const router = useRouter();                                                                                                                                                                                              
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const signUp = async () => {
   if(password.value === confirmPassword.value){
@@ -91,13 +88,15 @@ const signUp = async () => {
         password: password.value,
       });
       if (error) throw error;
-      router.push({name:"auth/login"}) //Revisar la ruta
-      } catch(error) {
+      router.push({path: 'login' })
+      } 
+      catch(error) {
       messageError.value = error.message;
       setTimeout(() => {
     messageError.value = null;
   }, 5000);
     }
+    alert("Go to your email to verify it")
     return;
   }  
   messageError.value = "Error: Passwords doesn't match"
@@ -105,30 +104,6 @@ const signUp = async () => {
     messageError.value = null;
   }, 5000);
 }; 
-//     try {
-//       const {error} = await supabase.auth.signUp({
-//         email: email.value,
-//         password: password.value
-//       })
-//       if (error) throw error;
-//       redirect
-//     }
-
-//     catch(error){
-//       messageError.value = error.message
-//       setTimeout(() => {
-//         messageError.value = null
-//       }, 2000)
-//     }
-//     return
-//   }
-//   messageError.value = "Passwords doesn't match" ;
-
-//   setTimeout(() => {
-//     errorMsg.value = null
-//   }, 2500)
-// };
-
 </script>
 
 <style></style>
