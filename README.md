@@ -17,9 +17,9 @@ Today I finished the skeletons of Sign In and Sing Up pages & now I'm trying to 
 I started with the logic of Sign In, I'm having troubles & feeling very lost. This weekend I will try to
 watch classes, videos or read some content to try to make my mind more clear.
 
-## Day 2 | 
+## Day 2 | 22/05/2022
 ### 1st Commit
-
+Working in SignUp function, having troubles to redirect to SignIn after click the button, in process to solve it
 
 
 # final-boiler-plate

@@ -6,9 +6,13 @@
     <h2>Sing Up to TaskApp</h2>
     <h3>Start Organizing your tasks todays!</h3>
   </div>
+  <!-- Catch Error -->
+  <div v-if="messageError"> <!--Priorizar error formato email-->
+    <p>{{messageError}}</p>
+  </div>
 
   <div>
-    <form action="Submit">
+    <form @submit.prevent="singUp" action="Submit">
 
       <label for="email">Email: </label>
       <input type="email" 
@@ -29,7 +33,7 @@
       <br><br>
 
       <label for="confirmPassword">Confirm Your Password: </label>
-      <input type="confirmPassword" 
+      <input type="password" 
       name="confirmPassword" 
       v-model="confirmPassword"
       id="confirmPassword" 
@@ -37,7 +41,7 @@
 
       <br><br>
 
-      <button type="button" @click="signUp">Sign In</button> 
+      <button type="button" @click="signUp">Sign Up</button> 
 
   <div>
     <h4>Already have an account?</h4>
@@ -48,13 +52,15 @@
     </form>
     
   </div>
-  <p>Good Music, Patience and a lot effort</p>
-  <p>Keep calm and code on!</p>
 </template>
 
 <script setup>
+import { ref, computed } from "vue";
 import PersonalRouter from "./PersonalRouter.vue";
-import {ref, computed} from "vue";
+import { supabase } from "../supabase";
+import { useRouter } from "vue-router";
+import { useUserStore } from "../stores/user";
+import { storeToRefs } from "pinia";
 // Route Variables
 const route = "/auth/login";
 const buttonText = "Sign In (IronHack)";
@@ -67,15 +73,38 @@ const confirmPassword = ref("");
 // // Error Message
 const messageError = ref("");
 
+// Login reference
+const router = useRouter();
+
 // Show hide password variable
 
 // Show hide confrimPassword variable
 
 // Router to push user once SignedUp to Log In
-                                                                                                                                                                                                    
+                                                                                                                                                                                                     
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
-// const signUp = async () => {
-//   if(password.value === confirmPassword.value){
+const signUp = async () => {
+  if(password.value === confirmPassword.value){
+    try{
+      const {error} = await supabase.auth.signUp({
+        email:email.value,
+        password: password.value,
+      });
+      if (error) throw error;
+      router.push({name:"auth/login"}) //Revisar la ruta
+      } catch(error) {
+      messageError.value = error.message;
+      setTimeout(() => {
+    messageError.value = null;
+  }, 5000);
+    }
+    return;
+  }  
+  messageError.value = "Error: Passwords doesn't match"
+  setTimeout(() => {
+    messageError.value = null;
+  }, 5000);
+}; 
 //     try {
 //       const {error} = await supabase.auth.signUp({
 //         email: email.value,
