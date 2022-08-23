@@ -35,9 +35,10 @@ const users = supabase.auth.user();
  // Runs when there is a auth state change
  // if user is logged in, this will fire
  supabase.auth.onAuthStateChange((_, session) => {
-    console.log("User logged in")
+
     store.methods.setUser(session);
     appReady.value = true;
+    console.log("User logged in")
  })
 
 // onMounted(async () => { //Pedir ayuda con esta función (58:22)

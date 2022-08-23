@@ -34,7 +34,12 @@
     />
     <br /><br />
 
-    <button type="button" @click="signIn">Sign In</button>
+    <button 
+    class="mt-6 py-2 px-6 rounded-sm self-start text-sm
+    text-white bg-green-600 duration-200 border-solid
+    border-2 border-transparent hover:border-green-600 hover:bg-white
+    hover:text-green-600"
+    type="button" @click="signIn">Sign In</button>
 
     <div>
       <h4>Don't have an account yet?</h4>
