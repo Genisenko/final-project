@@ -1,12 +1,17 @@
 <template>
-<div>
-  <Nav />
-</div>
-  <div>hello from Home.vue</div>
+  <div>
+    <Nav />
+  </div>
+  <div>
+    <NewTask/>
+  </div>
 </template>
 
 <script setup>
-import Nav from '../components/Nav.vue';
+import Nav from "../components/Nav.vue";
+import NewTask from "../components/NewTask.vue";
+
+
 </script>
 
 <style></style>

@@ -8,13 +8,18 @@
       </div>
       <div class="flex flex-row">
         <p>Welcome Back USER</p>
-        <button>Log Out</button>
+        <button @click="logout">Log Out</button>
       </div>
     </nav>
   </header>
 </template>
 
 <script setup >
+import {supabase} from "../supabase"
+import { useRouter } from "vue-router";
+
+// Setup ref to router
+const router = useRouter();
 
 //constant to save a variable that will hold the use router method
 
@@ -25,7 +30,11 @@
 // constant that saves the user email and cleans out the @client from the user
 
 // async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
-
+const logout = async () => {
+  console.log("User logged out")
+  await supabase.auth.signOut();
+  router.push({path: "auth/login"})
+}
 </script>
                                                                                                                                                                                                                           
 <style>

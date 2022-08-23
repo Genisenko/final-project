@@ -27,6 +27,10 @@ SignIn & SignUp finished
 ### 3rd Commit
 Tailwind Installed
 
+## Day 3 | 23/08/2022
+### 1st Commit
+The user stay logged even though the page are refreshed. Log Out function implemented.
+
 
 # final-boiler-plate
 
