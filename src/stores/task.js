@@ -15,9 +15,9 @@ export const useTaskStore = defineStore("tasks", {
       this.tasks = tasks;
       return this.tasks;
     },
-    // New code
-    async addTask(title, description) {
-      console.log(useUserStore().user.id);
+    // funcion para add task
+    async newTask(title, description) {
+      console.log(useUserStore().user)
       const { data, error } = await supabase.from("tasks").insert([
         {
           user_id: useUserStore().user.id,
@@ -27,5 +27,18 @@ export const useTaskStore = defineStore("tasks", {
         },
       ]);
     },
+
+    // funcion para borrar task
+    async deleteTask(id) {
+      const {data, error} = await supabase.from("tasks").delete().match({id: id})
+    },
+
+    //funcion para togglear booleano
+    async toggleTask(boolean, id){
+      const{data, error} = await supabase.from("tasks").
+      update({is_complete: boolean}).match({id: id})
+    },
   },
 });
+
+

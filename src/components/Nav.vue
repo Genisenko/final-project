@@ -1,14 +1,19 @@
 
 <template>
-  <header class="flex flex-row mb-8 items-center gap-x-3">
-    <nav class="flex flex-row">
+  <header class="flex flex-row  items-center gap-x-30 px-4 py-4">
+    <nav class="flex flex-row w-full justify-between">
       <div class="">
         <img class="" src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648481844/taskApp/imgs/logo-small_bh8xj2.svg" 
         alt="logo">
       </div>
       <div class="flex flex-row">
         <p>Welcome Back USER</p>
-        <button @click="logout">Log Out</button>
+        <button 
+        class=" px-4 rounded-sm self-start text-sm
+        text-white bg-[#03543F] duration-200 border-solid
+        border-2 border-transparent hover:border-[#03543F] hover:bg-white
+        hover:text-[#03543F]"
+        @click="logout">Log Out</button>
       </div>
     </nav>
   </header>
@@ -17,7 +22,10 @@
 <script setup >
 import {supabase} from "../supabase"
 import { useRouter } from "vue-router";
+import { useTaskStore } from "../stores/task";
 
+
+const user = supabase.auth.user();
 // Setup ref to router
 const router = useRouter();
 
@@ -34,7 +42,9 @@ const logout = async () => {
   console.log("User logged out")
   await supabase.auth.signOut();
   router.push({path: "auth/login"})
-}
+};
+
+
 </script>
                                                                                                                                                                                                                           
 <style>

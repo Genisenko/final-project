@@ -34,6 +34,14 @@ Login permanent & logout implemented
 ### 2nd Commit
 New Task template
 
+## Day 4 | 24/08/2022
+### Unique Commit of the day
+Today I almost done the logic of New Task, just need to polish the logic.
+I also implemented the delete & toggle button, well, technically Diego did it, but the project is mine and I say what I want.
+
+## Day 5 | 25/08/2022
+### 1st Commit
+
 # final-boiler-plate
 
 This template should help get you started developing the final project running on Vue 3 with the composition API, Pinia as a state management tool, vue router, vite and lastly Supabase running on the backend.

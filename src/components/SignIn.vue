@@ -1,38 +1,40 @@
 <template>
+<div>
   <div>
-    <a href="/auth#">
+    <a href="/auth#" class="flex justify-center">
       <img
+        class="pt-10"
         src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg"
         alt=""
       />
     </a>
-    <h2>Log In to TaskApp</h2>
-    <h3>Start Organizing your tasks todays!</h3>
+    <h2 class="text-2xl font-bold py-4 flex justify-center">Log In to TaskApp</h2>
+    <h3 class="text-lg text-[#758599] flex justify-center pb-4">Start Organizing your tasks todays!</h3>
   </div>
     <div v-if="errorMsg"> <!--Priorizar error formato email-->
     <p>{{errorMsg}}</p>
   </div>
 
-  <div>
-    <form @submit.prevent="singIn" action="Submit">
-    <label for="email">Email: </label>
+  <div class="ml-10 mt-5">
+    <form class="flex flex-col gap-y-2" @submit.prevent="singIn" action="Submit">
+    <label for="email" class="font-medium text-[#758599]/80">Email: </label>
     <input
+      class=" w-[60%] h-8 rounded-md shadow-lg bg-slate-100 mb-6"
       type="email"
       name="email"
       v-model="email"
       placeholder="Enter your email"
     />
-    <br /><br />
 
-    <label for="password">Password: </label>
+    <label for="password" class="font-medium text-[#758599]/80">Password: </label>
     <input
+      class=" w-[60%] h-8 rounded-md shadow-lg bg-slate-100 mb-6"
       type="password"
       name="password"
       v-model="password"
       id="password"
       placeholder="Enter your password"
     />
-    <br /><br />
 
     <button 
     class="mt-6 py-2 px-6 rounded-sm self-start text-sm
@@ -49,6 +51,7 @@
     </div>
   </form>
   </div>
+</div>
 </template>
 
 <script setup>
@@ -84,11 +87,12 @@ const redirect = useRouter();
 const signIn = async () => {
   try {
 // calls the user store and send the users info to backend to logIn
-    const {error} = await supabase.auth.signIn({
-      email: email.value, 
-      password: password.value,
-    });
-    if (error) throw error;
+    // const {error} = await supabase.auth.signIn({
+    //   email: email.value, 
+    //   password: password.value,
+    // });
+    // if (error) throw error;
+    useUserStore().signIn(email.value, password.value)
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {

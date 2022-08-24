@@ -3,15 +3,74 @@
     <Nav />
   </div>
   <div>
-    <NewTask/>
+    <NewTask @newTask="newTask" />
+  </div>
+
+    <TaskItem 
+    v-for="task in taskStore.tasks" 
+    :key="task.id"
+    :task="task"
+    @deleteTaskChild="deleteTaskParent"
+    @toggleTaskChild="toggleTaskParent"
+    />
+
+  <div>
+    <Footer />
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
+import { useTaskStore } from "../stores/task.js";
 import Nav from "../components/Nav.vue";
 import NewTask from "../components/NewTask.vue";
+import Footer from "../components/Footer.vue";
+import TaskItem from "../components/TaskItem.vue";
+import { useUserStore } from "../stores/user";
+import { useRouter } from "vue-router";
+
+useUserStore().fetchUser() // Con esta función mantenemos la sesión iniciada aún refrescando la página
+// console.log(useUserStore().user)
+
+// const redirect = useRouter()
+
+// const checkLogin = async () => {
+//   const user = await useUserStore().fetchUser() 
+//   if(user === null){
+//     redirect.push({path: "/auth/login"})
+//   }
+// }
 
 
+const errorMsg = ref(null);
+const tasks = ref([]);
+
+//Guardamos el useTaskStore dentro de una constante para poder usarlo dentro del archivo SFC (Single File Component)
+const taskStore = useTaskStore();
+
+//Usamos el hook de vida "onMounted" para acceder a las tareas de supabase antes de que se pinten los componentes
+onMounted(() => {
+  taskStore.fetchTasks();
+});
+
+//Función que se encarga de borrar la tarea de supabase
+const deleteTaskParent = async (task) => {
+  await taskStore.deleteTask(task.id);
+  taskStore.fetchTasks();
+}
+
+//Función que se encarga de togglear el boobleano de is complete
+const toggleTaskParent = async (task) => {
+  const toggled = !task.is_complete
+  const toggleId = task.id
+  await taskStore.toggleTask(toggled, toggleId)
+  taskStore.fetchTasks();
+}
+
+const newTask = async (newTaskTitle, newTaskDescription) => {
+  await taskStore.newTask(newTaskTitle, newTaskDescription)
+  taskStore.fetchTasks();
+};
 </script>
 
 <style></style>

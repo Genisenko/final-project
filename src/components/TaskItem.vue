@@ -1,13 +1,29 @@
 <template>
-  <div>Task Item Component</div>
+  <h1>{{task.title}}</h1>
+  <p>{{task.description}}</p>
+  <p>{{task.is_complete}}</p>
+  
+  <button @click="deleteTask">Delete Task</button>
+  <button v-if="task.is_complete" @click="toggleTask">Not Complete Task</button>
+  <button v-if="!task.is_complete" @click="toggleTask">Complete Task</button>
 </template>
 
 <script setup>
-// const emit = defineEmits([
-//   ENTER-EMITS-HERE
-// ])
+const emit = defineEmits([
+   "deleteTaskChild",
+   "toggleTaskChild"
+ ])
 
-// const props = defineProps(["ENTER-PROP-HERE"]);
+const props = defineProps(["task"]);
+
+const deleteTask = () => {
+ emit("deleteTaskChild", props.task)
+};
+
+const toggleTask = () => {
+ emit("toggleTaskChild", props.task)
+};
+
 </script>
 
 <style></style>
