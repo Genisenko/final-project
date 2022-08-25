@@ -7,7 +7,7 @@
     <!-- Form -->
       <form 
         class="flex flex-col gap-y-5 w-full">
-        <h1 class="text-2xl text-at-light-green"> Add a new Task </h1>
+        <h1 class="text-2xl"> Add a new Task </h1>
 
         <!-- Task Title-->
         <div

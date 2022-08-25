@@ -1,37 +1,89 @@
 <template>
-<div class="mx-4">
-  <h1>{{task.title}}</h1>
-  <p>{{task.description}}</p>
-  <p>{{task.is_complete}}</p>
-  
-  <button @click="deleteTask"
-  class=" mt-4 py-2 px-2 rounded-sm self-start text-sm
-    text-white bg-red-600 duration-200 border-solid
-    border-2 border-transparent hover:border-red-600 hover:bg-white
-    hover:text-red-600">Delete Task</button>
+  <div
+    class="mx-4 my-5 p-8 flex item-start flex-col bg-light-grey rounded-md shadow-lg bg-slate-200"
+  >
+    <h1 class="text-2xl">{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
 
-  <button v-if="!task.is_complete" @click="toggleTask">Not Complete Task</button>
+    <div v-if="editDialoge">
+      <h1>Hola Diego editador</h1>
+      <input type="text" v-model="newTitle" />
+      <input type="text" v-model="newDescription" />
+      <button @click.prevent="editTask">save</button>
+    </div>
 
-  <button v-if="task.is_complete" @click="toggleTask">Complete Task</button>
-</div>
+    <button
+      @click="deleteTask"
+      class="mt-4 mr-4 py-2 px-2 rounded-sm self-start text-sm text-white bg-red-600 duration-200 border-solid border-2 border-transparent hover:border-red-600 hover:bg-white hover:text-red-600"
+    >
+      Delete Task
+    </button>
+
+    <button
+      v-if="!task.is_complete"
+      @click="toggleTask"
+      class="mt-4 mr-4 py-2 px-2 rounded-sm self-start text-sm text-white bg-yellow-600 duration-200 border-solid border-2 border-transparent hover:border-yellow-600 hover:bg-white hover:text-yellow-600"
+    >
+      ❌ Unfinished Task
+    </button>
+
+    <button
+      v-if="task.is_complete"
+      @click="toggleTask"
+      class="mt-4 mr-4 py-2 px-2 rounded-sm self-start text-sm text-white bg-blue-600 duration-200 border-solid border-2 border-transparent hover:border-blue-600 hover:bg-white hover:text-blue-600"
+    >
+      ☑️ Completed Task
+    </button>
+
+    <button
+      @click="toggleDialog"
+      class="mt-4 mr-4 py-2 px-2 rounded-sm self-start text-sm text-white bg-green-600 duration-200 border-solid border-2 border-transparent hover:border-green-600 hover:bg-white hover:text-green-600"
+    >
+      Edit Task
+    </button>
+  </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
 const emit = defineEmits([
-   "deleteTaskChild",
-   "toggleTaskChild"
- ])
+  "deleteTaskChild",
+  "toggleTaskChild",
+  "editTaskChild",
+]);
+
+const editDialoge = ref(false);
+const newTitle = ref("");
+const newDescription = ref("");
+// const errorMsg //declarar errorMSg
 
 const props = defineProps(["task"]);
 
 const deleteTask = () => {
- emit("deleteTaskChild", props.task)
+  emit("deleteTaskChild", props.task);
 };
 
 const toggleTask = () => {
- emit("toggleTaskChild", props.task)
+  emit("toggleTaskChild", props.task);
 };
 
+const toggleDialog = () => {
+  editDialoge.value = !editDialoge.value;
+  newTitle.value = props.task.title;
+  newDescription.value = props.task.description;
+};
+
+const editTask = () => {
+  const newInfo = {
+    taskId: props.task,
+    newTitle: newTitle.value,
+    newDescription: newDescription.value,
+  };
+  emit("editTaskChild", newInfo);
+  newTitle.value = ""
+  newDescription.value = ""
+  editDialoge.value = false;
+};
 </script>
 
 <style></style>

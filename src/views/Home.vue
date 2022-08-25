@@ -12,6 +12,7 @@
     :task="task"
     @deleteTaskChild="deleteTaskParent"
     @toggleTaskChild="toggleTaskParent"
+    @editTaskChild="editTaskParent"
     />
 
   <div>
@@ -65,7 +66,7 @@ const taskStore = useTaskStore();
 const deleteTaskParent = async (task) => {
   await taskStore.deleteTask(task.id);
   refresh();
-}
+};
 
 //Función que se encarga de togglear el boobleano de is complete
 const toggleTaskParent = async (task) => {
@@ -73,7 +74,19 @@ const toggleTaskParent = async (task) => {
   const toggleId = task.id
   await taskStore.toggleTask(toggled, toggleId)
   taskStore.fetchTasks();
-}
+  refresh();
+};
+
+//Función que se encarga de editar la tarea de supabase
+const editTaskParent = async (task) => {
+  const newTitle = task.newTitle;
+  const newDescription = task.newDescription;
+  const taskId = task.taskId.id;
+  await taskStore.editTask(newTitle, newDescription, taskId);
+  refresh();
+};
+
+
 
 const newTask = async (newTaskTitle, newTaskDescription) => {
   await taskStore.newTask(newTaskTitle, newTaskDescription)

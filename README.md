@@ -41,6 +41,11 @@ I also implemented the delete & toggle button, well, technically Diego did it, b
 
 ## Day 5 | 25/08/2022
 ### 1st Commit
+NewTask done, only remaind edit button and style it
+
+### 2nd Commit
+All the logic complete, and style started.
+Only remainds make it responsive.
 
 # final-boiler-plate
 
