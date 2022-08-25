@@ -45,9 +45,9 @@
 
     <div>
       <h4 class="font-medium">Don't have an account yet?</h4>
-      <PersonalRouter :route="route" :buttonText="buttonText" />
-      <br /><br />
-      <router-link to="sign-up">Sing Up (Madu)</router-link>
+      <PersonalRouter class="font-medium mt-8" :route="route" :buttonText="buttonText" />
+      <br />
+      <router-link to="sign-up" class="font-medium">Sing Up (Madu)</router-link>
     </div>
   </form>
   </div>
