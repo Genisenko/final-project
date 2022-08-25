@@ -1,56 +1,64 @@
 <template>
+  <div class="bg-green-200 h-screen">
     <div>
-    <a href="/auth#">
-      <img src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="">
+    <a href="/auth#" class="flex justify-center">
+      <img
+      class="pt-10" 
+      src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" 
+      alt="">
     </a>
-    <h2>Sing Up to TaskApp</h2>
-    <h3>Start Organizing your tasks todays!</h3>
+    <h2 class="text-2xl font-bold py-4 flex justify-center">Sing Up to TaskApp</h2>
+    <h3 class="text-lg text-[#758599] flex justify-center pb-4">Start Organizing your tasks todays!</h3>
   </div>
   <!-- Catch Error -->
   <div v-if="messageError"> <!--Priorizar error formato email-->
     <p>{{messageError}}</p>
   </div>
 
-  <div>
-    <form @submit.prevent="singUp" action="Submit">
+  <div class="ml-10 mt-5">
+    <form class="flex flex-col gap-y-2" @submit.prevent="singUp" action="Submit">
 
-      <label for="email">Email: </label>
-      <input type="email" 
+      <label for="email" class="font-medium text-[#758599]/80">Email: </label>
+      <input 
+      class=" w-[60%] h-8 rounded-md shadow-lg bg-slate-100 mb-4"
+      type="email" 
       name="email"
       v-model="email" 
       id="email" 
       placeholder="Enter your email">
 
-      <br><br>
-
-      <label for="password">Password: </label>
-      <input type="password" 
+      <label for="password" class="font-medium text-[#758599]/80">Password: </label>
+      <input 
+      class="w-[60%] h-8 rounded-md shadow-lg bg-slate-100 mb-4"
+      type="password" 
       name="password"
       v-model="password" 
       id="password" 
       placeholder="Enter your password">
 
-      <br><br>
-
-      <label for="confirmPassword">Confirm Your Password: </label>
-      <input type="password" 
+      <label class="font-medium text-[#758599]/80" for="confirmPassword">Confirm Your Password: </label>
+      <input class=" w-[60%] h-8 rounded-md shadow-lg bg-slate-100 mb-4"
+      type="password" 
       name="confirmPassword" 
       v-model="confirmPassword"
       id="confirmPassword" 
       placeholder="Enter your password">
 
-      <br><br>
-
-      <button type="button" @click="signUp">Sign Up</button> 
+      <button class="mt-4 py-2 px-6 rounded-sm self-start text-sm
+    text-white bg-green-600 duration-200 border-solid
+    border-2 border-transparent hover:border-green-600 hover:bg-white
+    hover:text-green-600"
+       type="button" @click="signUp">Sign Up</button> 
 
   <div>
-    <h4>Already have an account?</h4>
-    <PersonalRouter :route="route" :buttonText="buttonText" />
-    <br><br>
-    <router-link to="login">Sign In (Madu)</router-link>
+    <h4 class="font-medium mt-6 mb-1 ">Already have an account?</h4>
+    <PersonalRouter class="font-medium pd-8" :route="route" :buttonText="buttonText" />
+    <br>
+    <!-- <router-link to="login">Sign In (Madu)</router-link> -->
   </div>
     </form>
     
+  </div>
   </div>
 </template>
 

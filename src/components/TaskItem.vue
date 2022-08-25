@@ -1,11 +1,19 @@
 <template>
+<div class="mx-4">
   <h1>{{task.title}}</h1>
   <p>{{task.description}}</p>
   <p>{{task.is_complete}}</p>
   
-  <button @click="deleteTask">Delete Task</button>
-  <button v-if="task.is_complete" @click="toggleTask">Not Complete Task</button>
-  <button v-if="!task.is_complete" @click="toggleTask">Complete Task</button>
+  <button @click="deleteTask"
+  class=" mt-4 py-2 px-2 rounded-sm self-start text-sm
+    text-white bg-red-600 duration-200 border-solid
+    border-2 border-transparent hover:border-red-600 hover:bg-white
+    hover:text-red-600">Delete Task</button>
+
+  <button v-if="!task.is_complete" @click="toggleTask">Not Complete Task</button>
+
+  <button v-if="task.is_complete" @click="toggleTask">Complete Task</button>
+</div>
 </template>
 
 <script setup>

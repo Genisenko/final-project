@@ -94,7 +94,7 @@ const newTask = () => {
     newTaskTitle.value = "";
     newTaskDescription.value = "";
   }
-}
+};
 
 </script>
 

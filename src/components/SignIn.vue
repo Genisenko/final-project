@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="bg-green-200 h-screen">
   <div>
     <a href="/auth#" class="flex justify-center">
       <img
@@ -37,17 +37,17 @@
     />
 
     <button 
-    class="mt-6 py-2 px-6 rounded-sm self-start text-sm
+    class="mt-4 py-2 px-6 rounded-sm self-start text-sm
     text-white bg-green-600 duration-200 border-solid
     border-2 border-transparent hover:border-green-600 hover:bg-white
     hover:text-green-600"
     type="button" @click="signIn">Sign In</button>
 
     <div>
-      <h4 class="font-medium">Don't have an account yet?</h4>
-      <PersonalRouter class="font-medium mt-8" :route="route" :buttonText="buttonText" />
+      <h4 class="font-medium mt-8 mb-2 ">Don't have an account yet?</h4>
+      <PersonalRouter class="font-medium pd-8" :route="route" :buttonText="buttonText" />
       <br />
-      <router-link to="sign-up" class="font-medium">Sing Up (Madu)</router-link>
+      <!-- <router-link to="sign-up" class="font-medium">Sing Up (Madu)</router-link> -->
     </div>
   </form>
   </div>

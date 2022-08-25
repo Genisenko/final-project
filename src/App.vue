@@ -13,7 +13,7 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
 import { ref } from "vue";
 import {supabase} from "./supabase"
-import store from "./stores/index"
+// import store from "./stores/index"
 import NavVue from "./components/Nav.vue";
 
 
@@ -34,29 +34,29 @@ const users = supabase.auth.user();
 
  // Runs when there is a auth state change
  // if user is logged in, this will fire
- supabase.auth.onAuthStateChange((_, session) => {
+//  supabase.auth.onAuthStateChange((_, session) => {
 
-    store.methods.setUser(session);
-    appReady.value = true;
-    console.log("User logged in")
- })
+//     store.methods.setUser(session);
+//     appReady.value = true;
+//     console.log("User logged in")
+//  })
 
-// onMounted(async () => { //Pedir ayuda con esta función (58:22)
-//   const appReady = ref(null);
-//   try {
-//     await userStore.fetchUser(); // here we call fetch user
-//     if (!user.value) {
-//       // redirect them to logout if the user is not there
-//       appReady.value = true;
-//       router.push({ path: "/auth/login" });
-//     } else {
-//       // continue to dashboard
-//       // router.push({ path: "/" });
-//     }
-//   } catch (e) {
-//     console.log(e);
-//   }
-// });
+onMounted(async () => { //Pedir ayuda con esta función (58:22)
+  const appReady = ref(null);
+  try {
+    await userStore.fetchUser(); // here we call fetch user
+    if (!user.value) {
+      // redirect them to logout if the user is not there
+      appReady.value = true;
+      router.push({ path: "/auth/login" });
+    } else {
+      // continue to dashboard
+      // router.push({ path: "/" });
+    }
+  } catch (e) {
+    // console.log(e);
+  }
+});
 </script>
 
 

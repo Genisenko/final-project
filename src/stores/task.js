@@ -8,6 +8,7 @@ export const useTaskStore = defineStore("tasks", {
   }),
   actions: {
     async fetchTasks() {
+      console.log("123")
       const { data: tasks } = await supabase
         .from("tasks")
         .select("*")

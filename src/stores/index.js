@@ -1,16 +1,16 @@
-import { reactive } from "vue";
+// import { reactive } from "vue";
 
-const state = reactive ({
-    user: null,
-});
+// const state = reactive ({
+//     user: null,
+// });
 
-const methods = {
-    setUser(payload) {
-        state.user = payload ? payload.user : null;
-    }
-}
+// const methods = {
+//     setUser(payload) {
+//         state.user = payload ? payload.user : null;
+//     }
+// }
 
-export default {
-    state,
-    methods,
-};
+// export default {
+//     state,
+//     methods,
+// };
