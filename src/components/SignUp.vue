@@ -1,7 +1,7 @@
 <template>
     <div>
     <a href="/auth#">
-      <img src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="">
+      
     </a>
     <h2>Sing Up to TaskApp</h2>
     <h3>Start Organizing your tasks todays!</h3>
