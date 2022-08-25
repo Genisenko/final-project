@@ -2,11 +2,11 @@
 <div class="bg-green-200 h-screen">
   <div>
     <a href="/auth#" class="flex justify-center">
-      <img
+      <!-- <img
         class="pt-10"
         src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg"
         alt=""
-      />
+      /> -->
     </a>
     <h2 class="text-2xl font-bold py-4 flex justify-center">Log In to TaskApp</h2>
     <h3 class="text-lg text-[#758599] flex justify-center pb-4">Start Organizing your tasks todays!</h3>
@@ -92,7 +92,7 @@ const signIn = async () => {
     //   password: password.value,
     // });
     // if (error) throw error;
-    useUserStore().signIn(email.value, password.value)
+    await useUserStore().signIn(email.value, password.value)
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {

@@ -7,7 +7,7 @@
   </div>
 
     <TaskItem 
-    v-for="task in taskStore.tasks" 
+    v-for="task in tasks" 
     :key="task.id"
     :task="task"
     @deleteTaskChild="deleteTaskParent"
@@ -29,7 +29,7 @@ import TaskItem from "../components/TaskItem.vue";
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
 
-useUserStore().fetchUser() // Con esta función mantenemos la sesión iniciada aún refrescando la página
+// useUserStore().fetchUser() // Con esta función mantenemos la sesión iniciada aún refrescando la página
 // console.log(useUserStore().user)
 
 // const redirect = useRouter()
@@ -49,14 +49,22 @@ const tasks = ref([]);
 const taskStore = useTaskStore();
 
 //Usamos el hook de vida "onMounted" para acceder a las tareas de supabase antes de que se pinten los componentes
-onMounted(() => {
-  taskStore.fetchTasks();
-});
+// onMounted(() => {
+//   taskStore.fetchTasks();
+// });
+ 
+ const refresh = async () => {
+  tasks.value = await taskStore.fetchTasks();
+  tasks.value.forEach((task) => console.log(task)
+  )
+ };
+ refresh();
+ 
 
 //Función que se encarga de borrar la tarea de supabase
 const deleteTaskParent = async (task) => {
   await taskStore.deleteTask(task.id);
-  taskStore.fetchTasks();
+  refresh();
 }
 
 //Función que se encarga de togglear el boobleano de is complete
@@ -69,7 +77,7 @@ const toggleTaskParent = async (task) => {
 
 const newTask = async (newTaskTitle, newTaskDescription) => {
   await taskStore.newTask(newTaskTitle, newTaskDescription)
-  taskStore.fetchTasks();
+  refresh();
 };
 </script>
 
