@@ -9,7 +9,7 @@
     </nav>
   </header>
   <div>
-    <p class="flex text-center justify-center mx-2">© 2022 TaskApp. All rights reserved. Built with ❤️ by Genís Gisbert</p>
+    <p class="flex text-center justify-center mx-2 pb-4">© 2022 TaskApp. All rights reserved. Built with ❤️ by Genís Gisbert</p>
   </div>
 </template>
 

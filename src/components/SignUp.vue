@@ -1,22 +1,25 @@
 <template>
-  <div class="bg-green-200 h-screen">
+  <div class="bg-[url('https://cdn.windowsreport.com/wp-content/uploads/2017/10/Notes.jpg')] bg-center bg-fixed bg-no-repeat bg-cover min-h-screen">
     <div>
     <a href="/auth#" class="flex justify-center">
       <img
-      class="pt-10" 
+      class="pt-14" 
       src="	https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" 
       alt="">
     </a>
     <h2 class="text-2xl font-bold py-4 flex justify-center">Sing Up to TaskApp</h2>
-    <h3 class="text-lg text-[#758599] flex justify-center pb-4">Start Organizing your tasks todays!</h3>
+    <h3 class="text-lg text-[#758599] flex justify-center">Start Organizing your tasks todays!</h3>
   </div>
   <!-- Catch Error -->
   <div v-if="messageError"> <!--Priorizar error formato email-->
     <p>{{messageError}}</p>
   </div>
 
-  <div class="ml-10 mt-5">
-    <form class="flex flex-col gap-y-2" @submit.prevent="singUp" action="Submit">
+  <div class="mx-8 mt-5
+              md:pb-8">
+    <form class="flex flex-col gap-y-2
+                md:mx-4 md:mt-5 md:p-8 md:flex md:item-start md:flex-col md:bg-light-grey md:rounded-md md:shadow-lg md:bg-slate-200/50" 
+    @submit.prevent="singUp" action="Submit">
 
       <label for="email" class="font-medium text-[#758599]/80">Email: </label>
       <input 
@@ -52,7 +55,7 @@
 
   <div>
     <h4 class="font-medium mt-6 mb-1 ">Already have an account?</h4>
-    <PersonalRouter class="font-medium pd-8" :route="route" :buttonText="buttonText" />
+    <PersonalRouter class="text-[#00bd7e] font-medium pd-8 " :route="route" :buttonText="buttonText" />
     <br>
     <!-- <router-link to="login">Sign In (Madu)</router-link> -->
   </div>
@@ -71,7 +74,7 @@ import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
 // Route Variables
 const route = "/auth/login";
-const buttonText = "Sign In (IronHack)";
+const buttonText = "Sign In";
 
 // // Input Fields
 const email = ref("");

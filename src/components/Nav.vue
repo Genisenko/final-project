@@ -6,8 +6,8 @@
         <img class="" src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648481844/taskApp/imgs/logo-small_bh8xj2.svg" 
         alt="logo">
       </div>
-      <div class="flex flex-row">
-        <p>Welcome Back USER</p>
+      <div class="flex flex-row font-bold md:gap-x-4">
+        <p>Welcome Back {{user.email}}</p>
         <button 
         class=" px-4 rounded-sm self-start text-sm
         text-white bg-[#03543F] duration-200 border-solid

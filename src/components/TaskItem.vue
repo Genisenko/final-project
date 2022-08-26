@@ -1,23 +1,20 @@
 <template>
   <div
-    class="mx-4 my-5 p-8 flex item-start flex-col bg-light-grey rounded-md shadow-lg bg-slate-200"
+    class="md:max-w-screen-md md:mx-auto mx-4 my-5 p-8 flex item-start flex-col bg-light-grey rounded-md shadow-lg bg-slate-200/70"
   >
     <h1 class="text-2xl">{{ task.title }}</h1>
     <p>{{ task.description }}</p>
-
-    <div v-if="editDialoge">
-      <h1>Hola Diego editador</h1>
-      <input type="text" v-model="newTitle" />
-      <input type="text" v-model="newDescription" />
-      <button @click.prevent="editTask">save</button>
+  <div>
+    <div v-if="editDialoge" class="mt-8">
+      <input type="text" v-model="newTitle" class="mr-6" />
+      <input type="text" v-model="newDescription" class="mr-6 md:w-[45%]" />
+      <br>
+      <button @click.prevent="editTask"
+      class="mt-4 mr-4 py-2 px-2 rounded-sm self-start text-sm text-white bg-green-700 duration-200 border-solid border-2 border-transparent hover:border-green-700 hover:bg-white hover:text-green-700">
+      Save</button>
     </div>
 
-    <button
-      @click="deleteTask"
-      class="mt-4 mr-4 py-2 px-2 rounded-sm self-start text-sm text-white bg-red-600 duration-200 border-solid border-2 border-transparent hover:border-red-600 hover:bg-white hover:text-red-600"
-    >
-      Delete Task
-    </button>
+    
 
     <button
       v-if="!task.is_complete"
@@ -41,6 +38,14 @@
     >
       Edit Task
     </button>
+
+    <button
+      @click="deleteTask"
+      class="mt-4 mr-4 py-2 px-2 rounded-sm self-start text-sm text-white bg-red-600 duration-200 border-solid border-2 border-transparent hover:border-red-600 hover:bg-white hover:text-red-600"
+    >
+      Delete Task
+    </button>
+  </div>
   </div>
 </template>
 

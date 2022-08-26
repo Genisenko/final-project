@@ -47,6 +47,10 @@ NewTask done, only remaind edit button and style it
 All the logic complete, and style started.
 Only remainds make it responsive.
 
+### Day 6 | 26/08/2022
+### Last Commit
+All finished, changes of the style done
+
 # final-boiler-plate
 
 This template should help get you started developing the final project running on Vue 3 with the composition API, Pinia as a state management tool, vue router, vite and lastly Supabase running on the backend.

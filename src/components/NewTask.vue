@@ -3,7 +3,7 @@
 
     <!-- Create -->
     <div 
-    class="p-8 flex item-start bg-light-grey rounded-md shadow-lg bg-slate-200"> 
+    class="p-8 flex item-start bg-light-grey rounded-md shadow-lg bg-slate-200/70"> 
     <!-- Form -->
       <form 
         class="flex flex-col gap-y-5 w-full">

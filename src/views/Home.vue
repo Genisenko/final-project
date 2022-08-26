@@ -1,4 +1,5 @@
 <template>
+<div class="bg-[url('https://st.depositphotos.com/1637056/2958/i/450/depositphotos_29589345-stock-photo-open-blank-notebook-on-grunge.jpg')] bg-center bg-fixed bg-no-repeat bg-cover min-h-screen">
   <div>
     <Nav />
   </div>
@@ -18,6 +19,7 @@
   <div>
     <Footer />
   </div>
+</div>
 </template>
 
 <script setup>
